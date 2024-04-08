@@ -2,32 +2,67 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+/* hides arrows on inputs */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: repeat(9, 1fr);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+  border: 1px solid #000;
+  width: 450px;
+  height: 450px;
+  margin-right: 20px;
 }
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.cell {
+  display: flex; /* Use flexbox to center content */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  width: 100%; /* Specify width */
+  height: 100%; /* Specify height */
+  border: 1px solid grey; /* Apply border to simulate grid lines */
+  font-size: 20px; /* Adjust font size as needed */
+  cursor: pointer; /* Optional: Change cursor on hover */
 }
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.highlighted-cell {
+  background-color: lightblue;
+}
+.related-cell {
+  background-color: lightgray;
+}
+.border-left {
+  border-left: 1.5px solid black;
+}
+.border-top {
+  border-top: 1.5px solid black;
+}
+.border-right {
+  border-right: 1.5px solid black;
+}
+.border-bottom {
+  border-bottom: 1.5px solid black;
+}
+.incorrect-input {
+  color: red;
+}
+.numberPad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 10px;
+  place-items: center;
+  margin-top: 70px;
+  margin-left: 10px;
+}
+.numberButton {
+  width: 120px; /* Example size */
+  height: 120px;
+  border: none;
+  background-color: lightgray;
+  font-size: 24px;
+  cursor: pointer;
 }
